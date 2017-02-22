@@ -1,0 +1,63 @@
+{
+  "name": "kcc",
+  "version": "1.0.0",
+  "description": "Map key codes to codes in JavaScript",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/kcc",
+  "homepage": "https://github.com/jonathantneal/kcc#readme",
+  "bugs": "https://github.com/jonathantneal/kcc/issues",
+  "main": "index.dist.js",
+  "module": "index.js",
+  "files": [
+    "index.js",
+    "index.dist.js"
+  ],
+  "scripts": {
+    "build": "babel index.js --out-file index.dist.js",
+    "clean": "git clean -X -d -f",
+    "pre-commit": "echo 'Running pre-commit checks...' && exit 0",
+    "prepublish": "npm run test && npm run build",
+    "test": "npm run test:ec && npm run test:es",
+    "test:ec": "echint",
+    "test:es": "eslint index.js"
+  },
+  "engines": {
+    "node": ">=4.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.8",
+    "echint": "^3.0.0",
+    "echint-config-dev": "^1.0.0",
+    "eslint": "^3.8.1",
+    "eslint-config-dev": "^1.0.0",
+    "pre-commit": "^1.2.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
+  "echint": {
+    "extends": "dev"
+  },
+  "eslintConfig": {
+    "extends": "dev"
+  },
+  "pre-commit": [
+    "pre-commit",
+    "test"
+  ],
+  "keywords": [
+    "javascript",
+    "js",
+    "keys",
+    "codes"
+  ]
+}
